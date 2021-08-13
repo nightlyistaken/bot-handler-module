@@ -26,7 +26,6 @@ Add this to your cargo.toml file:
 use bot_handler_manager;
 
 fn main() {
-   bot_handler_manager::text_speech_text("hello!");
      let mut commander = bot_handler_manager::Commander::new("You~> ");
      commander.on("hi", "Hello there!");
      // Loop and read
