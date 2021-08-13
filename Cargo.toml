@@ -1,0 +1,14 @@
+[package]
+name = "bot-handler-manager"
+version = "0.1.0"
+edition = "2018"
+description = "A really small chatbot 'if and else module'"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/dhairy-online/bot-handler-module"
+keywords = ["bot", "tts_rust", "template"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tts_rust = "0.1.3"
