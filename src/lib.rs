@@ -1,37 +1,57 @@
+
+
+#![allow(dead_code)]
 use tts_rust::text_speech_text;
-use std::io;
+use std::collections::HashMap;
 use std::io::Write;
+use std::io;
+pub struct Commander {
+    prefix: String,
+    handlers: HashMap<String, String>,
+}
+
+ impl Commander {
+    pub fn new(prefix: &str) -> Commander {
+        Commander {
+            prefix: prefix.to_string(),
+            handlers: HashMap::new(),
+        }
+    }
+
+    pub fn on(&mut self, key: &str, value: &str) {
+        self.handlers.insert(key.to_string(), value.to_string());
+    }
+
+    pub fn read(&self) {
+        let input = readline(&self.prefix);
+        let input = input.trim();
+        if self.handlers.contains_key(input) {
+            let answer = self.handlers.get(input).unwrap();
+            text_speech_text(answer);
+        }
+    }
+}
 
 /// Prompts on the CLI
 pub fn readline(msg: &str) -> String {
     print!("{}", msg);
     std::io::stdout().flush().unwrap();
     let mut user_input = String::new();
-    
     io::stdin().read_line(&mut user_input).unwrap();
-
     user_input
-    
-}
-
-/// Prompt manager: 
-pub fn if_msg(prefix :&str ,input: &str, output: &str) {
-    let inside = readline(&prefix );
-    if inside.contains(&input) {
-        text_speech_text(&output);
-    }
     
 }
 
 #[test]
 fn test() {
-    //' -  ' = This is will indicate the input is being typed at this line
-    //' Hello, World! ' = Message to be typed by user
-    //' Hey! I'm a bot! ' = Output of the message typed by user
-    // Output will be --
-
-    // - Hello, World!
-    //   Hey! I'm a bot!
-    
-    if_msg("- ","Hello, World!", "Hey! I'm a bot!");
+     
+     text_speech_text("hello!");
+     let mut commander = Commander::new("~> ");
+     commander.on("hi", "Hello");
+     // Commands section
+     loop {
+         commander.read();
+     }
 }
+
+
