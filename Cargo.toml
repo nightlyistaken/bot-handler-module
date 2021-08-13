@@ -1,6 +1,6 @@
 [package]
-name = "bot_handler_manager"
-version = "0.1.0"
+name = "bot-handler-manager"
+version = "0.1.1"
 edition = "2018"
 description = "A really small chatbot 'if and else module'"
 license = "MIT"

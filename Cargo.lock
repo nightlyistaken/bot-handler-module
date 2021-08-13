@@ -62,7 +62,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2da1976d75adbe5fbc88130ecd119529cf1cc6a93ae1546d8696ee66f0d21af1"
 
 [[package]]
-name = "bot_handler_manager"
+name = "bot-handler-manager"
 version = "0.1.0"
 dependencies = [
  "tts_rust",
